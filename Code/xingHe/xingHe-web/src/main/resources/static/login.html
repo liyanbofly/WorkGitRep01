@@ -1,0 +1,138 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <title>后台管理</title>
+
+    <link href="./css/Login.css" rel="stylesheet" />
+    <script type="text/javascript" src="./script/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./script/LoginPart.js"></script>
+    <script type="text/javascript" src="./script/Login.js?v=3"></script>
+
+    <script type="text/javascript" src="./script/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#loginId,#txtpassword").val("");
+
+            //  $("#btnSave").click();
+            $("#loginId").keypress(function (event) {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e && e.keyCode == 13) { // enter 键
+                    //要做的事情
+                    $("#txtpassword").focus();
+                }
+            });
+
+            $("#txtpassword").bind("keypress", function () {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e && e.keyCode == 13) { // enter 键
+                    //要做的事情
+                    Login.UserLogin();
+                }
+            })
+
+            setTimeout(function () {
+                debugger;
+
+                $("#txtpassword").focus();
+                $("#loginId").focus();
+
+            },250);
+
+
+
+        });
+    </script>
+
+    <style type="text/css">
+        /*加载部分*/
+
+        #BgDiv1 {
+            background-color: #000;
+            position: absolute;
+            z-index: 9999;
+            display: none;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+
+        .DialogDiv {
+            position: absolute;
+            z-index: 99999;
+        }
+        /*配送公告*/
+        .U-guodu-box {
+            padding: 5px 15px;
+            background: #3c3c3f;
+            filter: alpha(opacity=90);
+            -moz-opacity: 0.9;
+            -khtml-opacity: 0.9;
+            opacity: 0.9;
+            min-heigh: 200px;
+            border-radius: 10px;
+        }
+
+        .U-guodu-box div {
+            color: #fff;
+            line-height: 20px;
+            font-size: 12px;
+            margin: 0px auto;
+            height: 100%;
+            padding-top: 10%;
+            padding-bottom: 10%;
+        }
+        /*暂无数据*/
+        .nodata {
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<!--@*加载部分start*@-->
+<div id="BgDiv1"></div>
+<div class="DialogDiv" style="display:none; ">
+    <div class="U-guodu-box">
+        <div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td align="center"><img src="./img/loading3.gif"></td></tr>
+                <tr><td valign="middle" align="center" id="lodingText">登录中，请稍后！</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--@*加载部分End*@-->
+
+
+<hgroup>
+    <h1>星河易寿管理系统</h1>
+    <h3></h3>
+</hgroup>
+<form>
+    <div class="group">
+        <input type="text" id="loginId" name="loginId" value="admin" /><span class="highlight"></span><span class="bar"></span>
+        <label>用户名</label>
+    </div>
+    <div class="group">
+        <input type="password" id="txtpassword" name="txtpassword" value="111111" /><span class="highlight"></span><span class="bar"></span>
+        <label>密码</label>
+    </div>
+    <button type="button" class="button buttonBlue" onclick="Login.UserLogin(); return false;">
+        登录
+        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+</form>
+
+</body>
+</html>

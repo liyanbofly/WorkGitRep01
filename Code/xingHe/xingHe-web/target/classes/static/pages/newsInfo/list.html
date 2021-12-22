@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="../../css/formSelects-v4.css">
+<link href="../../script/plugIn/layui/lay/plugins/dtree/dtree.css" rel="stylesheet" />
+<link href="./../script/plugIn/layui/lay/plugins/dtree/font/dtreefont.css" rel="stylesheet" />
+<style>
+
+    .Advanced_search li {
+        width: 80%;
+    }
+    .layui-table {
+        width: 100% !important;
+        background-color: #fff;
+        color: #666;
+    }
+</style>
+<div>
+    <!-- <h2>员工管理</h2> -->
+    <div class="white_block line_mes_screen layui-form">
+        <form action="" class="layui-form">
+            <ul class="Advanced_search mt_8">
+                <li class="layui-form-item">
+                    <label class="layui-form-label">新闻标题：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="s_tileNmae" id="s_tileNmae" autocomplete="off" class="layui-input">
+                    </div>
+                </li>
+                <li class="ta_r">
+                    <a><button type="reset" id="reset" class="btn grey_line_btn btn_s blue_block_btn">重&nbsp;&nbsp;置</button></a>
+                    <a href="javascript:void(0)" id="btnSearch" class="btn blue_block_btn btn_s ml_5">查&nbsp;&nbsp;询</a>
+                    <!-- <a href="javascript:void(0)" class="c_blue" id="open_search"><i
+                        class="layui-icon layui-icon-down mr_5 ml_16"></i>展开</a> -->
+                </li>
+
+            </ul>
+        </form>
+    </div>
+    <div class="white_block mt_16 linelist_box_height">
+        <div class="fz_16 pl_24 pr_24 title_m">
+            <div class="fl_r">
+                <a href="javascript:void(0)" id="btnAdd" class="btn btn_m blue_block_btn ml_5 mt_16">新建新闻</a>
+            </div>
+            新闻管理
+        </div>
+        <table id="newslist" class="table_list line_list_table layui-form" lay-filter="tableFilter"></table>
+    </div>
+</div>
+
+
+<script type="text/html" id="xuhao">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+
+
+<!--<script type="text/javascript" src="../pages/userInfo/list.js?v=1"></script>-->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getScript('./pages/newsInfo/edit.js?' + mainindex.v).done(function () {
+
+        });
+        $.getScript('./pages/newsInfo/list.js?v=4' + mainindex.v).done(function () {
+           var pageListInfo = new NewsList();
+            // 初始化table页面
+            pageListInfo.initPage();
+        })
+    })
+</script>

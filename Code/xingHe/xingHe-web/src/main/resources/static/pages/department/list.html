@@ -1,0 +1,76 @@
+<!--部门管理列表页-->
+<div class="" id="departmentList">
+
+  <h2>部门管理</h2>
+  <div class="white_block pos_r clearfix">
+    <div class="pt_16" style="width: 260px;position: absolute;left: 0;z-index: 999;background: #fff;">
+      <ul id="organization-tree" class="dtree" data-id="0" style="width: 260px;"></ul>
+    </div>
+    <div class="layui-fluid" style="position: absolute;left: 0;width: 95%;z-index:2;">
+      <div class="layui-row" style="padding-left: 260px;">
+        <div class="layui-col-md12">
+          <div class="white_block line_mes_screen layui-form" style="margin-top: 0;">
+            <form action="" class="layui-form" name="departmentSearchForm">
+              <ul class="Advanced_search mt_8">
+                <li class="layui-form-item">
+                  <label class="layui-form-label">部门名称：</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="deptName" id="deptName" class="layui-input" placeholder="请输入" />
+                  </div>
+                </li>
+                <li class="layui-form-item">
+                  <label class="layui-form-label">上级部门：</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="parentName" id="parentName" class="layui-input" placeholder="请输入" />
+                  </div>
+                </li>
+                <li class="layui-form-item">
+                  <label class="layui-form-label">状态：</label>
+                  <div class="layui-input-block">
+                    <select name="deptStatus" id="deptStatus" class="layui-select">
+                      <option value="">请选择</option>
+                      <option value="1">启用</option>
+                      <option value="2">停用</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="ta_r">
+                  <a><button type="reset" class="btn grey_line_btn btn_s blue_block_btn">重&nbsp;&nbsp;置</button></a>
+                  <a href="javascript:void(0)" class="btn blue_block_btn btn_s ml_5"
+                    id="dept_list_btn_query">查&nbsp;&nbsp;询</a>
+                  <!-- <a href="javascript:void(0)" class="c_blue" id="open_search"><i
+                        class="layui-icon layui-icon-down mr_5 ml_16"></i>展开</a> -->
+                </li>
+              </ul>
+          </div>
+          <table id="departmentTable" lay-filter="departmentTable"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/html" id="deptToolbar">
+  <div class="ta_r">
+    <a href="javascript:void(0)" class="btn btn_m blue_block_btn ml_5" lay-event="addDept">新建部门</a>
+  </div>
+</script>
+<!--<script type="text/javascript" src="../pages/department/list.js"></script>-->
+<link href="../../script/plugIn/layui/lay/plugins/dtree/dtree.css" rel="stylesheet" />
+<link href="../../script/plugIn/layui/lay/plugins/dtree/font/dtreefont.css" rel="stylesheet" />
+
+<script>
+  $(function () {
+    $.getScript('../pages/department/list.js?v=' + mainindex.v).done(function () {
+      new DepartmentListPage().initPage();
+    })
+  });
+</script>
+<style>
+  .layui-table-tool-temp {
+    padding-right: 0px !important;
+  }
+
+  .layui-table-tool {
+    background: #fff;
+  }
+</style>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingHe.web.dao.IDepartmentMapper">
+	<resultMap id="baseResultMap" type="com.xingHe.entity.Department">
+		<id column="id" property="id" jdbcType="VARCHAR"/>
+		<result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+		<result column="level" property="level" jdbcType="TINYINT"/>
+		<result column="dept_status" property="deptStatus" jdbcType="TINYINT"/>
+		<result column="creator" property="creator" jdbcType="VARCHAR"/>
+		<result column="createdby" property="createdby" jdbcType="VARCHAR"/>
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+		<result column="updatedby" property="updatedby" jdbcType="VARCHAR"/>
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+		<result column="status" property="status" jdbcType="BIT"/>
+	</resultMap>
+	<resultMap id="voResultMap" type="com.xingHe.vo.department.DepartmentVo" extends="baseResultMap">
+		<result column="parent_name" property="parentName" jdbcType="VARCHAR"/>
+	</resultMap>
+	<resultMap id="voTreeResultMap" type="com.xingHe.vo.department.DeptTreeVo" extends="baseResultMap">
+		<result column="title" property="title" jdbcType="VARCHAR"/>
+	</resultMap>
+	<parameterMap id="baseParamMap" type="com.xingHe.entity.Department">
+		<parameter property="id" javaType="String"/>
+		<parameter property="deptName" javaType="String"/>
+		<parameter property="parentId" javaType="String"/>
+		<parameter property="level" javaType="Integer"/>
+		<parameter property="deptStatus" javaType="Integer"/>
+		<parameter property="creator" javaType="String"/>
+		<parameter property="createdby" javaType="String"/>
+		<parameter property="createdTime" javaType="java.sql.Timestamp"/>
+		<parameter property="updatedby" javaType="String"/>
+		<parameter property="updatedTime" javaType="java.sql.Timestamp"/>
+		<parameter property="status" javaType="boolean"/>
+	</parameterMap>
+
+
+	<select id="queryListByPage" resultMap="voResultMap">
+		SELECT
+		dep.*,temp.dept_name parent_name
+		FROM
+		department AS dep
+		LEFT JOIN department AS temp ON dep.parent_id = temp.id
+		<where>
+			<if test="search.deptName != null and search.deptName != '' ">
+				AND dep.dept_name LIKE CONCAT('%',#{search.deptName},'%')
+			</if>
+			<if test="search.parentName != null and search.parentName != '' ">
+				AND temp.dept_name LIKE CONCAT('%',#{search.parentName},'%')
+			</if>
+			<if test="search.deptStatus != null ">
+				AND dep.dept_status =#{search.deptStatus}
+			</if>
+			<if test="search.parentId != null ">
+				AND dep.parent_id =#{search.parentId}
+			</if>
+			AND dep.level > 0
+		</where>
+		order by dep.dept_status asc,dep.level asc, dep.updated_time DESC
+	</select>
+
+	<select id="selectDeptList" resultMap="voTreeResultMap">
+		SELECT
+		dep.id,dep.dept_name AS title,dep.parent_id,dep.level, temp.dept_name parent_name
+		FROM
+		department AS dep
+		LEFT JOIN department AS temp ON dep.parent_id = temp.id
+		<where>
+			AND dep.status = true
+		</where>
+		order by dep.level ASC
+	</select>
+
+	<!--获取部门信息用于权限-->
+	<select id="getDeptList"  resultType="com.xingHe.vo.role.AuthTrreVo">
+		SELECT
+		dep.id,dep.dept_name AS title,dep.parent_id as parentId
+		FROM department AS dep
+		<where>
+			AND dep.status = true
+		</where>
+		order by dep.level ASC
+	</select>
+</mapper>
+

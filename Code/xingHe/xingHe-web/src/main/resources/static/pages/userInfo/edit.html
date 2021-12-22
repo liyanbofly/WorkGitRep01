@@ -1,0 +1,111 @@
+<style>
+  .xm-select-parent .xm-form-select dl {
+    width: 135% !important;
+  }
+</style>
+<form class="layui-form" id="formEdit" lay-filter="formUser">
+  <div id="editForm_box" class="add_formEdit_box">
+    <div id="divEdit" class="layui-layer-content">
+      <div class="layui-form add_shipdate_form mt_16">
+        <input type="hidden" id="useId" name="useId">
+
+        <div class="layui-form-item">
+          <div class="layui-inline">
+
+            <label class="layui-form-label"><span style="color:red">*</span>员工名称</label>
+            <div class="layui-input-inline">
+              <input type="text" id="userName" name="userName" class="layui-input" lay-verify="required"
+                lay-verType="tips" placeholder="员工名称">
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <label class="layui-form-label">登录账号</label>
+            <div class="layui-input-inline">
+              <input type="text" id="loginId" name="loginId" class="layui-input" placeholder="登录账号" disabled="disabled">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="layui-form-item">
+          <div class="layui-inline">
+            <label class="layui-form-label"><span style="color:red">*</span>部门</label>
+            <div class="layui-input-inline">
+              <ul id="depart" name="depart" class="dtree" data-id="-1"></ul>
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <label class="layui-form-label"><span style="color:red">*</span>所属角色</label>
+            <div class="layui-input-inline">
+              <select xm-select="xmSelectRole" name="roles" id="roles" class="layui-select" lay-verify="required"
+                lay-verType="tips">
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-inline">
+            <label class="layui-form-label"><span style="color:red">*</span>用户状态</label>
+            <div class="layui-input-inline">
+              <select name="userStatus" id="userStatus" class="layui-select" class="layui-select" lay-verify="required">
+                <option value="1">启用</option>
+                <option value="2">停用</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <label class="layui-form-label"><span style="color:red">*</span>手机</label>
+            <div class="layui-input-inline">
+              <input type="text" id="mobile" name="mobile" class="layui-input" lay-verify="phone" lay-verType="tips"
+                placeholder="手机">
+            </div>
+          </div>
+        </div>
+
+        <!--        <div class="layui-form-item">-->
+        <!--          <div class="layui-inline">-->
+        <!--            <label class="layui-form-label"><span style="color:red">*</span>用户类型</label>-->
+        <!--            <div class="layui-input-inline">-->
+        <!--              <select name="userType" id="userType" class="layui-select" lay-verify="required" lay-verType="tips">-->
+        <!--                <option value="">请选择</option>-->
+        <!--                <option value="1">客户端用户</option>-->
+        <!--                <option value="2">管理端用户</option>-->
+        <!--              </select>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+        <div class="layui-inline">
+          <label class="layui-form-label">职务</label>
+          <div class="layui-input-inline">
+            <select name="duty" id="duty" class="layui-select" lay-verType="tips">
+              <option value="">请选择</option>
+              <option value="1">业务员</option>
+              <option value="2">业务员助理</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!--用户数据记录id-->
+      <input type="hidden" id="id" name="id">
+
+      <p class="ta_r mr_24 mt_10 btns_style">
+      </p>
+
+      <p class="ta_r mr_24 mt_10"
+        style="width: 750px;position:fixed;bottom: 0px;background: #fff;margin-top: 32px;border-top:1px solid rgba(0,0,0,.09) ;padding:10px">
+        <a href="javascript:" id="btnClose" class="grey_line_btn btn blue_block_btn btn_s">取消</a>
+        <a href="javascript:" id="btnSave" lay-filter="btnSave" lay-submit class="btn btn_s blue_block_btn ml_5">确定</a>
+      </p>
+    </div>
+  </div>
+  </div>
+</form>
+
+
+<script type="text/javascript">
+</script>

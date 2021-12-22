@@ -1,0 +1,29 @@
+2021-07-19 08:26:07.175 [main] INFO  com.xingHe.web.WebApplicatoin - Starting WebApplicatoin v2.2.5.RELEASE on DESKTOP-95SPIBH with PID 13432 (C:\Users\elane\Desktop\xh\xingHe\xingHe-web\target\xingHe-web-2.2.5.RELEASE.jar started by elane in C:\Users\elane\Desktop\xh\xingHe\xingHe-web\target)
+2021-07-19 08:26:07.181 [main] INFO  com.xingHe.web.WebApplicatoin - No active profile set, falling back to default profiles: default
+2021-07-19 08:26:07.867 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-07-19 08:26:07.871 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-07-19 08:26:07.913 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26ms. Found 0 Redis repository interfaces.
+2021-07-19 08:26:09.202 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 6001 (http)
+2021-07-19 08:26:09.212 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-6001"]
+2021-07-19 08:26:09.214 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-07-19 08:26:09.214 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2021-07-19 08:26:09.276 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-07-19 08:26:09.276 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2012 ms
+2021-07-19 08:26:09.384 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-07-19 08:26:09.517 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-07-19 08:26:10.611 [main] INFO  com.xingHe.web.utils.redis.RedisConfig - JedisPool注入成功！！
+2021-07-19 08:26:10.612 [main] INFO  com.xingHe.web.utils.redis.RedisConfig - redis地址：192.168.1.162:8379
+2021-07-19 08:26:10.939 [main] INFO  com.xingHe.web.utils.redis.RedisConfig - RedisMessageListenerContainer注入成功！！
+2021-07-19 08:26:11.117 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-07-19 08:26:11.225 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2021-07-19 08:26:11.538 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-6001"]
+2021-07-19 08:26:11.553 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-6001"]
+2021-07-19 08:26:11.554 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-07-19 08:26:11.559 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-6001"]
+2021-07-19 08:26:11.560 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-6001"]
+2021-07-19 08:26:11.562 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-07-19 08:26:11.572 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-07-19 08:26:11.590 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2021-07-19 08:26:11.592 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

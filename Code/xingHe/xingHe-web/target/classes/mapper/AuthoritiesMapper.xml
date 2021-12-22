@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingHe.web.dao.IAuthoritiesMapper">
+	<resultMap id="baseResultMap" type="com.xingHe.entity.Authorities">
+		<id column="id" property="id" jdbcType="VARCHAR"/>
+		<result column="auth_name" property="authName" jdbcType="VARCHAR"/>
+		<result column="auth_Code" property="authCode" jdbcType="VARCHAR"/>
+		<result column="auth_type" property="authType" jdbcType="TINYINT"/>
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+		<result column="sort" property="sort" jdbcType="INTEGER"/>
+		<result column="page_url" property="pageUrl" jdbcType="VARCHAR"/>
+		<result column="createdby" property="createdby" jdbcType="VARCHAR"/>
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+		<result column="updatedby" property="updatedby" jdbcType="VARCHAR"/>
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+		<result column="status" property="status" jdbcType="BIT"/>
+		<result column="icon_white" property="iconWhite" jdbcType="VARCHAR"/>
+		<result column="icon_grey" property="iconGrey" jdbcType="VARCHAR"/>
+		<result column="button_id" property="buttonId" jdbcType="VARCHAR"/>
+	</resultMap>
+	<parameterMap id="baseParamMap" type="com.xingHe.entity.Authorities">
+		<parameter property="id" javaType="String"/>
+		<parameter property="authName" javaType="String"/>
+		<parameter property="authCode" javaType="String"/>
+		<parameter property="authType" javaType="Integer"/>
+		<parameter property="parentId" javaType="String"/>
+		<parameter property="sort" javaType="Integer"/>
+		<parameter property="pageUrl" javaType="String"/>
+		<parameter property="createdby" javaType="String"/>
+		<parameter property="createdTime" javaType="java.sql.Timestamp"/>
+		<parameter property="updatedby" javaType="String"/>
+		<parameter property="updatedTime" javaType="java.sql.Timestamp"/>
+		<parameter property="status" javaType="boolean"/>
+		<parameter property="buttonId" javaType="String"/>
+	</parameterMap>
+
+    <select id="getAllMenus" resultMap="baseResultMap">
+		SELECT
+			auth.id,auth.auth_name,auth.auth_code,auth.auth_type,auth.parent_id,auth.sort,auth.page_url,icon_grey,icon_white
+		FROM
+			user_role_relation urr
+		JOIN auth_relation ar ON ar.role_id = urr.role_id
+		JOIN authorities auth ON auth.id = ar.auth_id
+		WHERE
+			 auth.auth_type=1 AND auth.`status`= true  AND urr.`status`=true
+			 AND urr.user_id = #{id}
+		GROUP BY urr.user_id,auth.id
+		ORDER BY auth.parent_id,auth.sort ASC,auth.sort ASC
+	</select>
+
+
+	<select id="getAuthList"    resultType="com.xingHe.vo.role.AuthTrreVo">
+		SELECT
+		id, auth_name AS title,parent_id as parentId
+		from
+		authorities
+		<where>
+			AND status = 1
+		</where>
+		order by  parent_id ASC,created_time desc
+	</select>
+</mapper>
+

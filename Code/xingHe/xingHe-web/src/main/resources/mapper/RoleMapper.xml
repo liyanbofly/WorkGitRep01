@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingHe.web.dao.IRoleMapper">
+	<resultMap id="baseResultMap" type="com.xingHe.entity.Role">
+		<id column="id" property="id" jdbcType="VARCHAR"/>
+		<result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+		<result column="remark" property="remark" jdbcType="VARCHAR"/>
+		<result column="role_type" property="roleType" jdbcType="TINYINT"/>
+		<result column="createdby" property="createdby" jdbcType="VARCHAR"/>
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+		<result column="updatedby" property="updatedby" jdbcType="VARCHAR"/>
+		<result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+		<result column="status" property="status" jdbcType="BIT"/>
+		<result column="role_category" property="roleCategory" jdbcType="INTEGER"/>
+	</resultMap>
+	<parameterMap id="baseParamMap" type="com.xingHe.entity.Role">
+		<parameter property="id" javaType="String"/>
+		<parameter property="roleName" javaType="String"/>
+		<parameter property="remark" javaType="String"/>
+		<parameter property="roleType" javaType="Integer"/>
+		<parameter property="createdby" javaType="String"/>
+		<parameter property="createdTime" javaType="java.sql.Timestamp"/>
+		<parameter property="updatedby" javaType="String"/>
+		<parameter property="updatedTime" javaType="java.sql.Timestamp"/>
+		<parameter property="status" javaType="boolean"/>
+		<parameter property="roleCategory" javaType="Integer"/>
+	</parameterMap>
+
+
+	<!--根据用户Id获取对应角色-->
+	<select id="getRoleByUserId"  parameterType="String" resultType="com.xingHe.entity.Role">
+		select  r.role_name as roleName ,r.id from user_role_relation  urr
+			inner  join  role r
+			on urr.role_id=r.id
+			where urr.`status`=1 and r.`status`=1 and urr.user_id=#{userId}
+	</select>
+
+	<!--获取角色列表-->
+	<select id="queryListByPage" parameterType="com.xingHe.vo.role.SearchRoleVo" resultType="com.xingHe.entity.Role">
+		select * from role
+		<where>
+			AND  `status`=1
+			<if test="search.roleName != null and search.roleName != '' ">
+				AND  role_name  LIKE CONCAT('%',#{search.roleName},'%')
+			</if>
+		</where>
+		order by created_time asc
+	</select>
+
+</mapper>
+

@@ -1,0 +1,77 @@
+<div class="layui-layout-admin">
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      setTimeout(function () {
+        if (mainindex.LoginUser) {
+          $("#muserName").text(mainindex.LoginUser.name);
+        }
+        $("#leftframe").height($(window).height() - $(".set_up").height() - $(".logo").height() - 16);
+      }, 800)
+
+    })
+  </script>
+
+  <div class="layui-side layui-bg-black" id="menuBox" style="overflow-y:hidden">
+
+    <div class="ta_c logo"><img src="../img/logo.png" alt="" width="180" height="60" /></div>
+    <!--左侧菜单-->
+    <div id="leftframe" class="jgj_left layui-side-scroll">
+
+    </div>
+    <ul class="set_up pb_24" style="z-index: 100000;display:flex;">
+      <li class="layui-nav-item mt_8">
+        <a href="javascript:"></a>
+        <span id="muserName" style="margin-left: 10px"></span>
+        <!--<img src="images/user_head.png" alt="" class="user_head" class="ml_16" />-->
+
+      </li>
+      <li class="layui-nav-item ml_16 mt_8">
+        <i class="layui-icon layui-icon-set-fill" id="Addshow" style="font-size: 19px;"></i>
+      </li>
+      <!-- <li class="layui-nav-item ml_16 mt_8">
+        <i class="layui-icon layui-icon-notice" style="font-size: 19px;"></i>
+      </li> -->
+      <span class="layui-nav-bar" style="left: 19.6563px; top: 55px; width: 0px; opacity: 0;"></span>
+      <div id="toggleMenuBtn" class="toggleMenuBtn"><img src="../img/menu_hide.png" alt=""></div>
+    </ul>
+    <div class="sttt_up">
+      <p class="pt_8 mb_8" id="bind_wx"  style="display: none">
+        <a href="#" >
+          <img src="../img/icon/password.png" alt="" style="width: 20px;height: 20px;">
+          &nbsp;&nbsp;绑定微信</a>
+      </p>
+      <p class="pt_8 mb_8" id="unbind_wx"  style="display: none">
+        <a href="#" >
+          <img src="../img/icon/password.png" alt="" style="width: 20px;height: 20px;">
+          &nbsp;&nbsp;解绑微信</a>
+      </p>
+      <p class="pt_8 mb_8">
+        <a href="#" id="change_pasword">
+          <img src="../img/icon/password.png" alt="" style="width: 20px;height: 20px;">
+          &nbsp;&nbsp;修改密码</a>
+      </p>
+      <p class="pt_8 mb_8">
+        <a href="#" id="top_icon_logout">
+          <img src="../img/icon/logout.png" alt="" style="width: 20px;height: 20px;">
+
+          &nbsp;&nbsp;退出</a>
+      </p>
+      <div class="d3"></div>
+    </div>
+  </div>
+
+  <div class="layui-body" style="overflow: auto;">
+    <!--右侧-->
+    <div id="rightframe" class="jgj_right" style="min-width: 1142px;">
+      <!-- /main-content -->
+      <ul id="mainTab" class="nav nav-tabs nav-pills">
+      </ul>
+      <div id="mainTabContent" class="tab-content">
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+

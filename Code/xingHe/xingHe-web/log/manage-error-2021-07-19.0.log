@@ -1,0 +1,14 @@
+2021-07-19 08:26:11.564 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 6001 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 6001 or configure this application to listen on another port.
+

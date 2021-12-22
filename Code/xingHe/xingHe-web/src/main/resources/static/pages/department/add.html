@@ -1,0 +1,42 @@
+<div id="divAddDept">
+  <form class="layui-form" id="addDept" lay-filter="formDept">
+    <div class="layui-form-item mt_10">
+      <div class="layui-inline" id="deptnameview">
+        <label class="layui-form-label"><span style="color:red">*</span>部门名称</label>
+        <div class="layui-input-inline">
+          <input type="text" name="deptName" id="deptName" required lay-verify="required" class="layui-input"
+            maxlength="50" autocomplete="false" lay-reqtext="部门名称必填">
+          <input type="hidden" id="deptId" name="deptId">
+        </div>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-inline">
+        <label class="layui-form-label"><span style="color:red">*</span>上级部门</label>
+        <div class="layui-input-inline">
+          <ul id="dept" class="dtree" data-id="-1"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-inline">
+        <label class="layui-form-label"><span style="color:red">*</span>状态</label>
+        <div class="layui-input-inline">
+          <select name="deptStatus" id="deptStatus">
+            <option value="1">启用</option>
+            <option value="2">停用</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <p class="ta_r mr_24 mt_10"
+      style="width: 480px;position:fixed;bottom: 0px;background: #fff;margin-top: 32px;border-top:1px solid rgba(0,0,0,.09) ;padding:10px">
+      <a class="btn btn_s blue_block_btn" lay-submit lay-filter="saveDept">保存</a>
+      <a type="button" class="btn grey_line_btn btn_s blue_block_btn"
+        onclick="layer.closeAll();">取消
+      </a>
+    </p>
+  </form>
+</div>
+
+<!--<script type="text/javascript" src="/pages/department/add.js"></script>-->

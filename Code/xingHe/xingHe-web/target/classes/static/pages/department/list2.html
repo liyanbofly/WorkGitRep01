@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>it is department list</title>
+
+    <script type="text/javascript" src="/script/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#aClickMe").click(function () {
+                    //  alert(22);
+                    $.ajax({
+                        url: '/department/getList',
+                        type: 'post',
+                        data: {
+                            loginId: $("#loginId").val(),
+                            password: $("#txtpassword").val(),
+                        },
+                        // contentType:'application/json',
+                        beforeSend: function () {
+                            // 登录加载中....
+                          //  Login.ShowLoading();
+                        },
+                        success: function (objData) {
+                            debugger;
+                            if (objData.code == 1) {
+
+                                var options = {expires: 1, path: '/', domain: document.domain};
+                                $.cookie('COOKIE_KEY_CURRENT_USER_MANAGE', objData.datas.cookie, options);
+                                //location.href = "/pages/department/list2.html";
+                            } else {
+                              //  Login.HideLoading();
+                                alert("用户名或密码错误！");
+                            }
+                        },
+                        error: function (ex) {
+                           // Login.HideLoading();
+                        }
+                    })
+                }
+            )
+        })
+
+
+    </script>
+</head>
+<body>
+<a id="aClickMe">点我请求 </a>
+it is department list
+</body>
+</html>
