@@ -37,6 +37,7 @@ public class Underline2CamelUtil {
                 sb.append(word.substring(1).toLowerCase());
             }
         }
+
         return sb.toString();
     }
     /**
