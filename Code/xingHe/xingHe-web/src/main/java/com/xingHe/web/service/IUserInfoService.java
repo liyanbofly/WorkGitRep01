@@ -66,4 +66,11 @@ public interface IUserInfoService {
      */
     ResultVO editStatus(String userId, String status);
     UserInfo getUserByMobile(String mobile);
+
+    /**
+     *用于测试
+     * @return
+     */
+     UserInfo getUserInfoByUser(UserInfo searchUser);
+
 }

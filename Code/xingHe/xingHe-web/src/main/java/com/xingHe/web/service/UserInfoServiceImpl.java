@@ -18,6 +18,7 @@ import com.xingHe.web.dao.IRoleMapper;
 import com.xingHe.web.dao.IUserInfoMapper;
 import com.xingHe.web.dao.IUserRoleRelationMapper;
 
+import com.xingHe.web.handelRequest.MyHandleArgsAnnotaion;
 import com.xingHe.web.utils.JwtHelper;
 import com.xingHe.web.utils.ObjectUtil;
 
@@ -368,12 +369,21 @@ public class UserInfoServiceImpl implements  IUserInfoService {
 
 
     public List<UserInfo> getUserInfo(){
-//        QueryWrapper<UserInfo> qWrapper=new QueryWrapper<>();
-//        qWrapper.last(" limit 100");
-//      return    userInfoMapper.selectList(qWrapper);
+
             return  new ArrayList<>();
     }
 
+    /**
+     *用于测试
+     * @return
+     */
+    @MyHandleArgsAnnotaion
+    public UserInfo getUserInfoByUser(UserInfo searchUser) {
+        UserInfo retUser = new UserInfo();
+        retUser.setUserName("retUser");
+
+        return retUser;
+    }
 
 
 
