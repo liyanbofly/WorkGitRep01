@@ -67,20 +67,36 @@ public class DateUtil {
     }
 
 
+    /**
+     *  将字符串转换成 LocalDate 或LocalDateTime
+     * @param dateType  LocalDate.class 或LocalDateTime.class
+     * @param dateStr 时间字符串 2022-02-03 或 20220203 或 2022-02-03 12:10:20
+     * @param format  格式 yyyy-MM-dd\yyyyMMdd
+     * @param <T>
+     * @return
+     */
     public static <T>  T stringToLocalDate(Class<T> dateType,String dateStr,@NotNull String format) {
         try {
             if(dateStr==null){
                 return null;
             }
-            if (dateType == java.time.LocalDate.class || dateType == java.time.LocalDateTime.class) {
+            if (dateType == java.time.LocalDate.class) {
                 return   (T)LocalDate.parse(dateStr,DateTimeFormatter.ofPattern(format));
             }
+            if( dateType == java.time.LocalDateTime.class){
+                return   (T)LocalDateTime.parse(dateStr,DateTimeFormatter.ofPattern(format));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return  null;
-
     }
+
+
+
+
+
 
 
 
@@ -94,11 +110,11 @@ public class DateUtil {
 //            String before = "20200319143000000";
 //String after = LocalDateTime.parse(new StringBuilder(before).insert(8, " "), DateTimeFormatter.ofPattern("yyyyMMdd HHmmssSSS")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS"));
 
-            System.out.println("System.currentTimeMillis() = " + System.currentTimeMillis());
-            Date dt=new Date();
+            LocalDateTime dt=LocalDateTime.now();
+            System.out.println("dt.plusDays(1) = " + dt.plusDays(1));
+            System.out.println("dt.plusHours(2) = " + dt.plusHours(2));
 
-
-            System.out.println("stringToLocalDate(LocalDate.class,\"2022-05-15\",YMD) = " + stringToLocalDate(LocalDate.class, "20220515", "yyyyMMdd"));
+            System.out.println("stringToLocalDate(LocalDate.class, ,yyyyMMddHHmm) = " + stringToLocalDate(LocalDateTime.class, "202205151225", "yyyyMMddHHmm"));
 
 
         } catch (Exception e) {
