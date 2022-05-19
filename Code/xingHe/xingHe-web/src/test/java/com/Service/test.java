@@ -13,6 +13,8 @@ public class test {
 
     @Test
     public void simpleMethod() {
+        String s="33,22";
+        s.split(",",-1);
         //    ThreadpoolService
         ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(9, 100, 100, TimeUnit.SECONDS, new SynchronousQueue<>());
 

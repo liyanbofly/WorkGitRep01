@@ -37,7 +37,7 @@ spring:
     database: 0 # Redis数据库索引（默认为0）
     host: localhost # Redis服务器地址
     port: 6379 # Redis服务器连接端口
-    password: redis123 # Redis服务器连接密码（默认为空）如果有可以设置 password: redis123
+    password:  # Redis服务器连接密码（默认为空）如果有可以设置 password: redis123
     timeout: 10000 # 连接超时时间（毫秒）
     block-when-exhausted: true # 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true
     jedis:
