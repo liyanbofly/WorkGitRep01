@@ -1,6 +1,7 @@
 package com.xingHe.web.utils;
 
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 import java.text.DateFormat;
@@ -94,13 +95,26 @@ public class DateUtil {
     }
 
 
+    /**
+     * 字符日期加减天后，原样格式返回
+     * 如： “2022-05-16” 加1天  返回 “2022-05-17”
+     *     “20220516” 加1天  返回 “20220517”
+     * @param dateTime  时间字符串
+     * @param days 加天数
+     * @return 传入参数以相同格式返回
+     *
+     * 可以扩展：可以加 一section 参数 区别加  月、天、等
+     */
+    public static String plusDays(String dateTime, long days,String format) {
+        return LocalDate.parse(String.valueOf(dateTime), DateTimeFormatter.ofPattern(format))
+                .plusDays(days).format(DateTimeFormatter.ofPattern(format));
+    }
 
 
-
-
-
-
-
+    //org.joda.time;
+//    public static LocalDateTime dateTimeToLocalDateTime(DateTime jodaDateTime) {
+//        return LocalDateTime.ofInstant(jodaDateTime.toDate().toInstant(), ZoneId.systemDefault());
+//    }
 
 
 
@@ -114,7 +128,11 @@ public class DateUtil {
             System.out.println("dt.plusDays(1) = " + dt.plusDays(1));
             System.out.println("dt.plusHours(2) = " + dt.plusHours(2));
 
-            System.out.println("stringToLocalDate(LocalDate.class, ,yyyyMMddHHmm) = " + stringToLocalDate(LocalDateTime.class, "202205151225", "yyyyMMddHHmm"));
+            System.out.println("plusDays(\"2022-02-19\",1,\"yyyy-MM-dd\") = " + plusDays("2022-02-19", 20, "yyyy-MM-dd"));
+
+            String str1=null;
+            String str2="";
+            System.out.println("str2.equals(str1) = " + str2.equals(str1));
 
 
         } catch (Exception e) {
